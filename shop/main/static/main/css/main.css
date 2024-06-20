@@ -1,0 +1,29 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    
+}
+.navbar-brand img {
+    height: 40px; /* Размер логотипа */
+    vertical-align: middle; /* Выравнивание по центру */
+}
+.navbar-nav .nav-link {
+    margin-right: 15px;
+    margin-top: 10px;
+    font-size: 18px;
+}
+.navbar-nav.ml-auto {
+    display: flex;
+    align-items: center;
+    
+}
+.navbar-collapse {
+    padding-left: 0; 
+}
+@media (max-width: 992px) {
+    .navbar-nav .nav-link {
+        margin-right: 0;
+    }
+    .navbar-nav {
+        text-align: center;
+    }
+}

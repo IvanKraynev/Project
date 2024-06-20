@@ -1,0 +1,89 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Каталог{% endblock %}
+{% block content %}
+    <style>
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Центрирование карточек по горизонтали */
+            max-width: 1200px; /* Максимальная ширина контейнера */
+            margin: 0 auto; /* Центрирование контейнера на странице */
+        }
+        .product-card {
+            position: relative; /* Позиционируем относительно карточки товара */
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            width: 300px; /* Ширина карточки */
+            display: inline-block;
+            text-align: left; /* Выравнивание текста внутри карточки */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Тень для карточек (опционально) */
+            background: #fff; /* Фон карточек (опционально) */
+            display: flex;
+            flex-direction: column; /* Расположить содержимое по вертикали */
+            justify-content: space-between; /* Распределить пространство между элементами */
+        }
+        .product-image {
+            width: 100%;
+            height: 200px; /* Высота изображения */
+            object-fit: cover; /* Масштабирование изображения */
+            border-bottom: 1px solid #eee; /* Разделительная линия между изображением и описанием (опционально) */
+        }
+        .product-card h2 {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+        .product-card p {
+            margin-top: 5px;
+            font-size: 14px;
+            color: #666;
+        }
+        .product-card .price-and-button {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px; /* Отступ сверху для выравнивания */
+        }
+        .product-card p.price {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px; /* Отступ под заголовком */
+        }
+
+        .container h1 {
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            padding: 0 10px; /* Отступы для выравнивания */
+        }
+
+        @media (max-width: 992px) {
+            .products-container {
+                justify-content: flex-start; /* Изменение на flex-start для мобильных устройств */
+            }
+            .product-card {
+                width: calc(100% - 20px); /* Ширина карточки на мобильных устройствах */
+            }
+        }
+    </style>
+
+    <div class="container">
+        <h1>Композитные материалы</h1>
+    </div>
+    <div class="products-container">
+        {% for product in products %}
+            <div class="product-card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+                <h2>{{ product.title }}</h2>
+                <p>{{ product.description }}</p>
+                <div class="price-and-button">
+                    <p class="price">{{ product.price }}₽</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
